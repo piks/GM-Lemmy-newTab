@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         GM Lemmy NewTab
+// @namespace    https://github.com/Djones4822/GM-Lemmy-newTab
 // @description  Open links in new tab. Ctrl-click or Middle-click loads it in background
 // @match        https://*/*
 // @version      1.0.0
 // @author       giddy@beehaw.org, Djones4822
 // @run-at       document-end
-// @grant    		 GM.openInTab
-// source-url    https://github.com/Djones4822/GM-Lemmy-newTab
-
+// @grant        GM.openInTab
+// @license      MIT
 // ==/UserScript==
 
 var suppressing, clickedElement, curHost;
