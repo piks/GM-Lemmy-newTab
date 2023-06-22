@@ -3,11 +3,13 @@
 // @namespace    https://github.com/Djones4822/GM-Lemmy-newTab
 // @description  Open links in new tab. Ctrl-click or Middle-click loads it in background
 // @match        https://*/*
-// @version      1.0.0
+// @version      1.0.1
 // @author       giddy@beehaw.org, Djones4822
 // @run-at       document-end
 // @grant        GM.openInTab
 // @license      MIT
+// @updateURL    https://github.com/Djones4822/GM-Lemmy-newTab/raw/main/lemmy.newtab.user.js
+// @installURL   https://github.com/Djones4822/GM-Lemmy-newTab/raw/main/lemmy.newtab.user.js
 // ==/UserScript==
 
 var suppressing, clickedElement, curHost;
