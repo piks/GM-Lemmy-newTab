@@ -4,7 +4,7 @@
 // @originalSource https://github.com/Djones4822/GM-Lemmy-newTab
 // @description  Open links in new tab. Ctrl-click or Middle-click loads it in background
 // @match        https://*/*
-// @version      1.0.1
+// @version      1.0.2
 // @author       giddy@beehaw.org, Djones4822, contributor: pika@lemmy.world, piks
 // @run-at       document-idle
 // @license      MIT
@@ -19,7 +19,7 @@
 // @grant        GM.registerMenuCommand
 // ==/UserScript==
 
-var suppressing, clickedElement, curHost;
+var suppressing, clickedElement, curHost, settings_config;
 const isLemmy = document.head.querySelector("[name~=Description][content]")?.content === "Lemmy";
 const newTabPages = ["/post/", "/u/"];
 
@@ -101,35 +101,33 @@ if(isLemmy){  // ignore everything if we aren't on a Lemmy Instance
 			suppressing = false;
 		}, 100);
 	}
-}
-
-
-/*
-add config menu
-*/
-let settings_config = new GM_config(
-	{
-		'id': 'new-tab', // The id used for this instance of GM_config
-		'title': 'Script Settings', // Panel Title
-		'fields': // Fields object
+	/*
+	add config menu
+	*/
+	settings_config = new GM_config(
 		{
-			'new-tab': // This is the id of the field
+			'id': 'new-tab', // The id used for this instance of GM_config
+			'title': 'Script Settings', // Panel Title
+			'fields': // Fields object
 			{
-				'label': 'Open new user and post links in new tab, otherwise default action',
-				'type': 'checkbox', 
-				'default': false
-			}
-		},
-		'events':{
-			'save':
-				function(){
-					this.close();
+				'new-tab': // This is the id of the field
+				{
+					'label': 'Open new user and post links in new tab, otherwise default action',
+					'type': 'checkbox', 
+					'default': false
 				}
+			},
+			'events':{
+				'save':
+					function(){
+						this.close();
+					}
+			}
 		}
-	}
-);
-GM.registerMenuCommand('Open New-Tab Settings', 
-	function(){
-		settings_config.open();
-	}
-)
+	);
+	GM.registerMenuCommand('Open New-Tab Settings', 
+		function(){
+			settings_config.open();
+		}
+	)
+}
